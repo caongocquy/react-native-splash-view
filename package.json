@@ -1,12 +1,12 @@
 {
   "name": "@showdar/react-native-splash-view",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A native view to show image or lotie splash",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
-      "source": "./src/index.tsx",
+      "source": "./src/index.ts",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
@@ -47,14 +47,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caongocquy/showdar-react-native-splash-view.git"
+    "url": "git+https://github.com/caongocquy/react-native-splash-view.git"
   },
   "author": "Leo <quy.caongoc@gmail.com> (https://github.com/caongocquy)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/caongocquy/showdar-react-native-splash-view/issues"
+    "url": "https://github.com/caongocquy/react-native-splash-view/issues"
   },
-  "homepage": "https://github.com/caongocquy/showdar-react-native-splash-view#readme",
+  "homepage": "https://github.com/caongocquy/react-native-splash-view#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -82,7 +82,7 @@
     "react-native-builder-bob": "^0.40.8",
     "release-it": "^17.10.0",
     "turbo": "^1.10.7",
-    "typescript": "^5.8.3"
+    "typescript": "5.5.4"
   },
   "peerDependencies": {
     "react": "*",
@@ -149,7 +149,7 @@
     ]
   },
   "codegenConfig": {
-    "name": "ReactNativeSplashViewSpec",
+    "name": "ReactNativeSplashView",
     "type": "modules",
     "jsSrcsDir": "src",
     "android": {

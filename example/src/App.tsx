@@ -1,20 +1,11 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from '@showdar/react-native-splash-view';
-
-const result = multiply(3, 7);
-
+import { useSplash } from '@showdar/react-native-splash-view';
+import { useEffect } from 'react';
+import HideSplash from './HideSplash';
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
-}
+  const { init } = useSplash();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  useEffect(() => {
+    init({ allowFinishAnimation: true });
+  }, []);
+  return <HideSplash />;
+}

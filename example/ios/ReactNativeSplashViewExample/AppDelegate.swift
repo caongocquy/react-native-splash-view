@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import ReactNativeSplashView 
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       in: window,
       launchOptions: launchOptions
     )
+    if let keyWindow = UIApplication.shared
+        .connectedScenes
+        .compactMap({ $0 as? UIWindowScene })
+        .flatMap({ $0.windows })
+        .first(where: { $0.isKeyWindow }) {
+
+      Splash.showOnWindow(
+        keyWindow,
+        imageName: "splash_bg",
+        lottieName: "splash_lottie"
+      )
+    }
+
 
     return true
   }
