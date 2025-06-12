@@ -1,33 +1,150 @@
 # @showdar/react-native-splash-view
 
-A native view to show image or lotie splash
+[![npm version](https://img.shields.io/npm/v/@showdar/react-native-splash-view)](https://www.npmjs.com/package/@showdar/react-native-splash-view)
+[![license](https://img.shields.io/npm/l/@showdar/react-native-splash-view)](./LICENSE)
+[![downloads](https://img.shields.io/npm/dm/@showdar/react-native-splash-view)](https://www.npmjs.com/package/@showdar/react-native-splash-view)
 
-## Installation
+A lightweight native splash screen view for React Native apps, with optional [Lottie](https://airbnb.io/lottie/#/) animation support and full control via JS.
 
-```sh
-npm install @showdar/react-native-splash-view
-```
+Supports:
 
-## Usage
-
-
-```js
-import { multiply } from '@showdar/react-native-splash-view';
-
-// ...
-
-const result = multiply(3, 7);
-```
-
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
+- ✅ Native iOS splash via Swift
+- ✅ Background image + optional Lottie
+- ✅ JS control via hook: `useSplash()`
+- ✅ Auto delay hide if animation is running
 
 ---
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+## 🚀 Installation
+
+> 🛠 Requires CocoaPods for iOS
+
+### 1. Add to your project
+
+```sh
+yarn add @showdar/react-native-splash-view
+```
+
+### 2. iOS setup
+
+```sh
+cd ios && pod install
+```
+
+> Ensure minimum iOS version is 11.0+
+
+---
+
+## ✨ Usage
+
+### ✅ Show splash from native (AppDelegate)
+
+In `AppDelegate.m` (ObjC):
+
+```objc
+#import <ReactNativeSplashView/ReactNativeSplashView-Swift.h>
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  ...
+  [Splash showOnWindow:self.window imageName:@"splash_bg" lottieName:@"splash_lottie"];
+  return YES;
+}
+```
+
+Or in `AppDelegate.swift` (Swift):
+
+```swift
+import ReactNativeSplashView
+
+func application(
+  _ application: UIApplication,
+  didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+) -> Bool {
+  Splash.showOnWindow(
+    UIApplication.shared.connectedScenes
+      .compactMap { $0 as? UIWindowScene }
+      .flatMap { $0.windows }
+      .first { $0.isKeyWindow },
+    imageName: "splash_bg",
+    lottieName: "splash_lottie"
+  )
+  return true
+}
+```
+
+---
+
+### ✅ Use from JS
+
+```tsx
+import { useSplash } from '@showdar/react-native-splash-view';
+
+export default function App() {
+  const { init, hide } = useSplash();
+
+  useEffect(() => {
+    init({ allowFinishAnimation: true });
+
+    setTimeout(() => {
+      hide(); // waits for Lottie to finish if needed
+    }, 3000);
+  }, []);
+
+  return <MainApp />;
+}
+```
+
+---
+
+## 🧩 API
+
+### `Splash.showOnWindow(window, imageName, lottieName)`
+- `imageName`: string – required, image in `Assets.xcassets`
+- `lottieName`: string | nil – optional, Lottie JSON in bundle
+
+### `useSplash({ allowFinishAnimation })`
+
+- `allowFinishAnimation` (default: `true`)
+  - If `true`, waits for Lottie to finish before hiding
+  - If `false`, allows hide immediately
+
+---
+
+## 📦 Asset Setup
+
+### Image
+
+- Add `splash_bg.png` to `Images.xcassets`
+- Name it: `splash_bg`
+
+### Lottie
+
+- Add `splash_lottie.json` to Xcode project (tick target)
+
+---
+
+## 🧪 Example
+
+This repo contains an [`example/`](./example/) app using the module locally:
+
+```sh
+cd example
+yarn install
+cd ios && pod install && cd ..
+yarn ios
+```
+
+---
+
+## 💡 TODO
+
+- [ ] Android support
+- [ ] Dark mode adaptive splash
+- [ ] Auto-hide after animation
+- [ ] Fully typed native JS bridge
+
+---
+
+## 📄 License
+
+MIT © [@showdar](https://github.com/caongocquy)
