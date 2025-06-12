@@ -2266,16 +2266,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@leo-showdar/react-native-splash-view@portal:..::locator=%40showdar%2Freact-native-splash-view-example%40workspace%3Aexample":
-  version: 0.0.0-use.local
-  resolution: "@leo-showdar/react-native-splash-view@portal:..::locator=%40showdar%2Freact-native-splash-view-example%40workspace%3Aexample"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  languageName: node
-  linkType: soft
-
-"@leo-showdar/react-native-splash-view@workspace:.":
+"@leo-showdar/react-native-splash-view@1.0.1, @leo-showdar/react-native-splash-view@workspace:.":
   version: 0.0.0-use.local
   resolution: "@leo-showdar/react-native-splash-view@workspace:."
   dependencies:
@@ -3134,7 +3125,7 @@ __metadata:
     "@babel/core": ^7.25.2
     "@babel/preset-env": ^7.25.3
     "@babel/runtime": ^7.25.0
-    "@leo-showdar/react-native-splash-view": "portal:.."
+    "@leo-showdar/react-native-splash-view": 1.0.1
     "@react-native-community/cli": 18.0.0
     "@react-native-community/cli-platform-android": 18.0.0
     "@react-native-community/cli-platform-ios": 18.0.0
