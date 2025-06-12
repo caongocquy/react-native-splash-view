@@ -1,8 +1,8 @@
-# @showdar/react-native-splash-view
+# @leo-showdar/react-native-splash-view
 
-[![npm version](https://img.shields.io/npm/v/@showdar/react-native-splash-view)](https://www.npmjs.com/package/@showdar/react-native-splash-view)
-[![license](https://img.shields.io/npm/l/@showdar/react-native-splash-view)](./LICENSE)
-[![downloads](https://img.shields.io/npm/dm/@showdar/react-native-splash-view)](https://www.npmjs.com/package/@showdar/react-native-splash-view)
+[![npm version](https://img.shields.io/npm/v/@leo-showdar/react-native-splash-view)](https://www.npmjs.com/package/@leo-showdar/react-native-splash-view)
+[![license](https://img.shields.io/npm/l/@leo-showdar/react-native-splash-view)](./LICENSE)
+[![downloads](https://img.shields.io/npm/dm/@leo-showdar/react-native-splash-view)](https://www.npmjs.com/package/@leo-showdar/react-native-splash-view)
 
 A lightweight native splash screen view for React Native apps, with optional [Lottie](https://airbnb.io/lottie/#/) animation support and full control via JS.
 
@@ -22,7 +22,7 @@ Supports:
 ### 1. Add to your project
 
 ```sh
-yarn add @showdar/react-native-splash-view
+yarn add @leo-showdar/react-native-splash-view
 ```
 
 ### 2. iOS setup
@@ -77,7 +77,7 @@ func application(
 ### ✅ Use from JS
 
 ```tsx
-import { useSplash } from '@showdar/react-native-splash-view';
+import { useSplash } from '@leo-showdar/react-native-splash-view';
 
 export default function App() {
   const { init, hide } = useSplash();
@@ -99,6 +99,7 @@ export default function App() {
 ## 🧩 API
 
 ### `Splash.showOnWindow(window, imageName, lottieName)`
+
 - `imageName`: string – required, image in `Assets.xcassets`
 - `lottieName`: string | nil – optional, Lottie JSON in bundle
 
