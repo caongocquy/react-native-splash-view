@@ -2266,6 +2266,49 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@leo-showdar/react-native-splash-view@portal:..::locator=%40showdar%2Freact-native-splash-view-example%40workspace%3Aexample":
+  version: 0.0.0-use.local
+  resolution: "@leo-showdar/react-native-splash-view@portal:..::locator=%40showdar%2Freact-native-splash-view-example%40workspace%3Aexample"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  languageName: node
+  linkType: soft
+
+"@leo-showdar/react-native-splash-view@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@leo-showdar/react-native-splash-view@workspace:."
+  dependencies:
+    "@commitlint/config-conventional": ^19.6.0
+    "@eslint/compat": ^1.2.7
+    "@eslint/eslintrc": ^3.3.0
+    "@eslint/js": ^9.22.0
+    "@evilmartians/lefthook": ^1.5.0
+    "@react-native-community/cli": 15.0.0-alpha.2
+    "@react-native/babel-preset": 0.79.2
+    "@react-native/eslint-config": ^0.78.0
+    "@release-it/conventional-changelog": ^9.0.2
+    "@types/jest": ^29.5.5
+    "@types/react": ^19.0.0
+    commitlint: ^19.6.1
+    del-cli: ^5.1.0
+    eslint: ^9.22.0
+    eslint-config-prettier: ^10.1.1
+    eslint-plugin-prettier: ^5.2.3
+    jest: ^29.7.0
+    prettier: ^3.0.3
+    react: 19.0.0
+    react-native: 0.79.2
+    react-native-builder-bob: ^0.40.8
+    release-it: ^17.10.0
+    turbo: ^1.10.7
+    typescript: 5.5.4
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  languageName: unknown
+  linkType: soft
+
 "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1":
   version: 5.1.1-v1
   resolution: "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1"
@@ -3091,62 +3134,18 @@ __metadata:
     "@babel/core": ^7.25.2
     "@babel/preset-env": ^7.25.3
     "@babel/runtime": ^7.25.0
+    "@leo-showdar/react-native-splash-view": "portal:.."
     "@react-native-community/cli": 18.0.0
     "@react-native-community/cli-platform-android": 18.0.0
     "@react-native-community/cli-platform-ios": 18.0.0
     "@react-native/babel-preset": 0.79.2
     "@react-native/metro-config": 0.79.2
     "@react-native/typescript-config": 0.79.2
-    "@showdar/react-native-splash-view": "file:.."
     "@types/react": ^19.0.0
     react: 19.0.0
     react-native: 0.79.2
     react-native-builder-bob: ^0.40.8
     react-native-monorepo-config: ^0.1.9
-  languageName: unknown
-  linkType: soft
-
-"@showdar/react-native-splash-view@file:..::locator=%40showdar%2Freact-native-splash-view-example%40workspace%3Aexample":
-  version: 1.0.0
-  resolution: "@showdar/react-native-splash-view@file:..#..::hash=d73681&locator=%40showdar%2Freact-native-splash-view-example%40workspace%3Aexample"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 754cfe5a5d893fd3ebad67bb41ef74636f6e354bb1f7ffcf0a2057e4e606d695e20b7580151daece0a43d4b01c94c92ca00fd609674c61e950c3b41829997bc9
-  languageName: node
-  linkType: hard
-
-"@showdar/react-native-splash-view@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@showdar/react-native-splash-view@workspace:."
-  dependencies:
-    "@commitlint/config-conventional": ^19.6.0
-    "@eslint/compat": ^1.2.7
-    "@eslint/eslintrc": ^3.3.0
-    "@eslint/js": ^9.22.0
-    "@evilmartians/lefthook": ^1.5.0
-    "@react-native-community/cli": 15.0.0-alpha.2
-    "@react-native/babel-preset": 0.79.2
-    "@react-native/eslint-config": ^0.78.0
-    "@release-it/conventional-changelog": ^9.0.2
-    "@types/jest": ^29.5.5
-    "@types/react": ^19.0.0
-    commitlint: ^19.6.1
-    del-cli: ^5.1.0
-    eslint: ^9.22.0
-    eslint-config-prettier: ^10.1.1
-    eslint-plugin-prettier: ^5.2.3
-    jest: ^29.7.0
-    prettier: ^3.0.3
-    react: 19.0.0
-    react-native: 0.79.2
-    react-native-builder-bob: ^0.40.8
-    release-it: ^17.10.0
-    turbo: ^1.10.7
-    typescript: 5.5.4
-  peerDependencies:
-    react: "*"
-    react-native: "*"
   languageName: unknown
   linkType: soft
 

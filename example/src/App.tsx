@@ -1,4 +1,4 @@
-import { useSplash } from '@showdar/react-native-splash-view';
+import { useSplash } from '@leo-showdar/react-native-splash-view';
 import { useEffect } from 'react';
 import HideSplash from './HideSplash';
 export default function App() {
