@@ -128,9 +128,6 @@ export default function App() {
 ## 💡 TODO
 
 - [ ] Android support
-- [ ] Dark mode adaptive splash
-- [ ] Auto-hide after animation
-- [ ] Fully typed native JS bridge
 
 ---
 
