@@ -1,7 +1,7 @@
 # @leo-showdar/react-native-splash-view
 
-[![npm version](https://img.shields.io/npm/v/@leo-showdar/react-native-splash-view)](https://www.npmjs.com/package/@leo-showdar/react-native-splash-view)
-[![license](https://img.shields.io/npm/l/@leo-showdar/react-native-splash-view)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/@leo-showdar/react-native-splash-view)](https://www.npmjs.com/package/@leo-showdar/react-native-splash-view)  
+[![license](https://img.shields.io/npm/l/@leo-showdar/react-native-splash-view)](./LICENSE)  
 [![downloads](https://img.shields.io/npm/dm/@leo-showdar/react-native-splash-view)](https://www.npmjs.com/package/@leo-showdar/react-native-splash-view)
 
 A lightweight native splash screen view for React Native apps, with optional [Lottie](https://airbnb.io/lottie/#/) animation support and full control via JS.
@@ -116,24 +116,10 @@ export default function App() {
 ### Image
 
 - Add `splash_bg.png` to `Images.xcassets`
-- Name it: `splash_bg`
 
 ### Lottie
 
 - Add `splash_lottie.json` to Xcode project (tick target)
-
----
-
-## 🧪 Example
-
-This repo contains an [`example/`](./example/) app using the module locally:
-
-```sh
-cd example
-yarn install
-cd ios && pod install && cd ..
-yarn ios
-```
 
 ---
 
