@@ -6,52 +6,48 @@
 
 A lightweight native splash screen view for React Native apps, with optional [Lottie](https://airbnb.io/lottie/#/) animation support and full control via JS.
 
-Supports:
+**Supported Platforms:**
 
-- ✅ Native iOS splash via Swift
-- ✅ Background image + optional Lottie
-- ✅ JS control via hook: `useSplash()`
-- ✅ Auto delay hide if animation is running
+- ✅ iOS (native Swift)
+- ✅ Android (native Kotlin)
+- ✅ Optional background image and/or Lottie
+- ✅ Full JS control: `init()`, `hide()`
+- ✅ Auto-hide after animation ends
 
 ---
 
 ## 🚀 Installation
 
-> 🛠 Requires CocoaPods for iOS
+> 🛠 Requires **CocoaPods** (iOS) and `react-native >= 0.68+` (Autolinking)
 
-### 1. Add to your project
-
-```sh
+```bash
 yarn add @leo-showdar/react-native-splash-view
 ```
 
-### 2. iOS setup
+---
 
-```sh
+## 🍏 iOS Setup
+
+```bash
 cd ios && pod install
 ```
 
-> Ensure minimum iOS version is 11.0+
+> Requires minimum iOS version **11.0+**
 
----
+### 🔹 Show splash from native (AppDelegate)
 
-## ✨ Usage
-
-### ✅ Show splash from native (AppDelegate)
-
-In `AppDelegate.m` (ObjC):
+#### Objective-C
 
 ```objc
 #import <ReactNativeSplashView/ReactNativeSplashView-Swift.h>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  ...
   [Splash showOnWindow:self.window imageName:@"splash_bg" lottieName:@"splash_lottie"];
   return YES;
 }
 ```
 
-Or in `AppDelegate.swift` (Swift):
+#### Swift
 
 ```swift
 import ReactNativeSplashView
@@ -74,7 +70,50 @@ func application(
 
 ---
 
-### ✅ Use from JS
+## 🤖 Android Setup
+
+> No manual linking required (supports autolink)
+
+### 🔹 Show splash from native (MainActivity.kt)
+
+```kotlin
+import com.reactnativesplashview.SplashView
+
+class MainActivity : ReactActivity() {
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    // Show splash screen from native
+    SplashView.show(this, "splash_bg", "splash_lottie")
+  }
+}
+```
+
+### 🔹 Add assets
+
+- `splash_bg.png`:  
+  → Place in `android/app/src/main/res/drawable/`
+
+- `splash_lottie.json`:  
+  → Place in `android/app/src/main/assets/`
+
+If `assets/` folder doesn't exist:
+
+```gradle
+// android/app/build.gradle
+android {
+  ...
+  sourceSets {
+    main {
+      assets.srcDirs = ['src/main/assets']
+    }
+  }
+}
+```
+
+---
+
+## ✨ Usage in JavaScript
 
 ```tsx
 import { useSplash } from '@leo-showdar/react-native-splash-view';
@@ -85,7 +124,7 @@ export default function App() {
   useEffect(() => {
     init({ allowFinishAnimation: true });
 
-    //Your app logic
+    // App startup logic...
     setTimeout(() => {
       hide();
     }, 3000);
@@ -99,35 +138,36 @@ export default function App() {
 
 ## 🧹 API
 
-### `Splash.showOnWindow(window, imageName, lottieName)`
+### `Splash.showOnWindow(window, imageName, lottieName)` (iOS)
 
-- `imageName`: string – required, image in `Assets.xcassets`
-- `lottieName`: string | nil – optional, Lottie JSON in bundle
+- `imageName`: `string` – required, image from `.xcassets`
+- `lottieName`: `string` – optional, Lottie animation name
+
+### `SplashView.show(activity, imageName, lottieName)` (Android)
+
+- `imageName`: `String?` – optional
+- `lottieName`: `String?` – optional  
+  _(at least one must be provided)_
 
 ### `useSplash({ allowFinishAnimation })`
 
-- `allowFinishAnimation` (default: `true`)
-
-  - If `true`, waits for Lottie to finish before hiding
-  - If `false`, allows hide immediately
+| Option                 | Default | Description                                       |
+| ---------------------- | ------- | ------------------------------------------------- |
+| `allowFinishAnimation` | `true`  | Wait for Lottie animation to finish before hiding |
 
 ---
 
 ## 📦 Asset Setup
 
-### Image
+### iOS
 
 - Add `splash_bg.png` to `Images.xcassets`
+- Add `splash_lottie.json` to project bundle (✅ tick target)
 
-### Lottie
+### Android
 
-- Add `splash_lottie.json` to Xcode project (tick target)
-
----
-
-## 💡 TODO
-
-- [ ] Android support
+- Add `splash_bg.png` to `res/drawable`
+- Add `splash_lottie.json` to `src/main/assets`
 
 ---
 

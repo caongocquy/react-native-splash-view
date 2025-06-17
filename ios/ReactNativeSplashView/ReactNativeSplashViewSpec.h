@@ -6,7 +6,6 @@
 #endif
 
 @protocol NativeReactNativeSplashViewSpec <NSObject>
-- (void)show;
 - (void)hide;
 - (BOOL)isUsingLottie;
 @end

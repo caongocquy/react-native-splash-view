@@ -1,28 +1,32 @@
-import NativeSplashView from './NativeSplashView';
 import {
   InteractionManager,
   NativeEventEmitter,
   NativeModules,
 } from 'react-native';
+import NativeSplashView from './NativeSplashView';
+
 export { default as useSplash } from './useSplash';
-const splashEvents = new NativeEventEmitter(NativeModules.SplashListener);
 
 type SplashParameters = {
   allowFinishAnimation?: boolean;
 };
 
+const splashEvents = new NativeEventEmitter(NativeModules.SplashListener);
+
+// Internal state
+let isInitialized = false;
 let isAnimationFinished = false;
 let waitingToHide = false;
 let allowAutoHide = false;
-let isInitialized = false;
-let animationSub: any = null;
+let animationSub: ReturnType<NativeEventEmitter['addListener']> | null = null;
 
 /**
- * Initializes the splash screen module.
- * @param {SplashParameters} options - Optional parameters for initialization.
- * @property {boolean} [options.allowFinishAnimation=true] - Whether to allow the splash animation to finish before hiding.
+ * Initializes the splash screen system.
+ * Should be called once during app launch.
+ *
+ * @param options - Optional config:
+ * @property allowFinishAnimation - If true (default), splash will wait for Lottie animation to complete before hiding.
  */
-
 export function init(options?: SplashParameters) {
   if (isInitialized) return;
 
@@ -37,7 +41,11 @@ export function init(options?: SplashParameters) {
         hide();
       }
     });
+
+    // Notify native that JS is ready to receive events
+    NativeSplashView.jsHasSubscribed?.();
   } else {
+    // If not using Lottie, consider animation already finished
     isAnimationFinished = true;
     if (waitingToHide) {
       hide();
@@ -47,6 +55,10 @@ export function init(options?: SplashParameters) {
   isInitialized = true;
 }
 
+/**
+ * Hides the splash screen.
+ * If the animation has not finished yet, it will defer until it's done.
+ */
 export function hide() {
   if (isAnimationFinished) {
     InteractionManager.runAfterInteractions(() => {
@@ -58,8 +70,14 @@ export function hide() {
   }
 }
 
+/**
+ * Cleans up internal listeners and resets splash state.
+ * Called after splash is fully hidden.
+ */
 function cleanup() {
   animationSub?.remove?.();
+  animationSub = null;
+
   isInitialized = false;
   isAnimationFinished = false;
   waitingToHide = false;

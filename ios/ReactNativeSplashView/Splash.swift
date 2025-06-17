@@ -10,6 +10,12 @@ public class Splash: NSObject {
 
   @objc public static func showOnWindow(_ window: UIWindow?, imageName: String?, lottieName: String?) {
     guard splashView == nil, let window = window else { return }
+    
+    // ⚠️ Validate: Ensure at least one of imageName or lottieName is provided
+    guard imageName != nil || lottieName != nil else {
+      print("⚠️ SplashView Warning: imageName and lottieName are both nil — showing blank screen")
+      return
+    }
 
     let splashContainer = UIView(frame: window.bounds)
 
