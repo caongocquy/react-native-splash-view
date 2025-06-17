@@ -1,6 +1,6 @@
 {
   "name": "@leo-showdar/react-native-splash-view",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A native view to show image or lotie splash",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -151,7 +151,7 @@
     "type": "modules",
     "jsSrcsDir": "src",
     "android": {
-      "javaPackageName": "com.showdar.reactnativesplashview"
+      "javaPackageName": "com.leoshowdar.reactnativesplashview"
     }
   },
   "create-react-native-library": {
