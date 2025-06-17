@@ -4,9 +4,11 @@ import com.facebook.react.bridge.*
 
 class ReactNativeSplashViewModule(reactContext: ReactApplicationContext) :
   ReactContextBaseJavaModule(reactContext) {
-
+  init {
+      SplashEventBridge.setContext(reactContext)
+  }
   override fun getName(): String = "ReactNativeSplashView"
-
+  
   @ReactMethod
   fun hide() {
     currentActivity?.let {

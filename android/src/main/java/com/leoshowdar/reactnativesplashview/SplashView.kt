@@ -4,6 +4,7 @@ package com.leoshowdar.reactnativesplashview
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.app.Activity
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -13,7 +14,11 @@ object SplashView {
   private const val TAG = "SplashContainer"
   private var isShowing = false
 
-  fun show(activity: Activity) {
+  fun show(activity: Activity, imageName: String?, lottieName: String?) {
+    if (imageName.isNullOrEmpty() && lottieName.isNullOrEmpty()) {
+      Log.w("SplashView", "⚠️ You should provide at least imageName or lottieName")
+    }
+
     if (isShowing) return
 
     activity.runOnUiThread {
@@ -27,37 +32,43 @@ object SplashView {
         tag = TAG
       }
 
-      val background = ImageView(activity).apply {
-        setImageResource(R.drawable.splash_screen)
-        layoutParams = FrameLayout.LayoutParams(
-          ViewGroup.LayoutParams.MATCH_PARENT,
-          ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        scaleType = ImageView.ScaleType.FIT_XY
-      }
-
-      val lottieView = LottieAnimationView(activity).apply {
-        setAnimation("splash_lottie.json")
-        repeatCount = 0
-        layoutParams = FrameLayout.LayoutParams(
-          ViewGroup.LayoutParams.MATCH_PARENT,
-          ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        scaleType = ImageView.ScaleType.CENTER_CROP
-        addAnimatorListener(object : AnimatorListenerAdapter() {
-          override fun onAnimationEnd(animation: Animator) {
-            SplashEventBridge.sendEvent("onLottieAnimationFinished", null)
+      // Add background image if provided
+      if (!imageName.isNullOrEmpty()) {
+        val resId = activity.resources.getIdentifier(imageName, "drawable", activity.packageName)
+        if (resId != 0) {
+          val background = ImageView(activity).apply {
+            setImageResource(resId)
+            layoutParams = FrameLayout.LayoutParams(
+              ViewGroup.LayoutParams.MATCH_PARENT,
+              ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            scaleType = ImageView.ScaleType.FIT_XY
           }
-        })
-        playAnimation()
+          container.addView(background)
+        }
       }
 
-      container.addView(background)
-      container.addView(lottieView)
+      // Add Lottie animation if provided
+      if (!lottieName.isNullOrEmpty()) {
+        val lottieView = LottieAnimationView(activity).apply {
+          setAnimation("$lottieName.json")
+          repeatCount = 0
+          layoutParams = FrameLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+          )
+          scaleType = ImageView.ScaleType.CENTER_CROP
+          addAnimatorListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+              SplashEventBridge.sendEvent("onLottieAnimationFinished", null)
+            }
+          })
+          playAnimation()
+        }
+        container.addView(lottieView)
+      }
 
       (activity.window.decorView as? ViewGroup)?.addView(container)
-
-      SplashEventBridge.setContext(activity)
     }
   }
 
