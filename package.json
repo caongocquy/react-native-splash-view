@@ -1,6 +1,6 @@
 {
   "name": "@leo-showdar/react-native-splash-view",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A native view to show image or lotie splash",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
