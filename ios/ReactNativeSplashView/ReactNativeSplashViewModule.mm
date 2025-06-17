@@ -17,10 +17,6 @@
 
   RCT_EXPORT_MODULE()
 
-  - (void)show {
-    [Splash showOnWindow:RCTKeyWindow()];
-  }
-
   - (void)hide {
     [Splash hide];
   }
