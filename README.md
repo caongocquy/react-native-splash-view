@@ -77,7 +77,7 @@ func application(
 ### 🔹 Show splash from native (MainActivity.kt)
 
 ```kotlin
-import com.reactnativesplashview.SplashView
+import com.leoshowdar.reactnativesplashview.SplashView
 
 class MainActivity : ReactActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {

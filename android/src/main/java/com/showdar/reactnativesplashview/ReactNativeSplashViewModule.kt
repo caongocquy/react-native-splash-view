@@ -1,4 +1,4 @@
-package com.showdar.reactnativesplashview
+package com.leoshowdar.reactnativesplashview
 
 import com.facebook.react.bridge.*
 

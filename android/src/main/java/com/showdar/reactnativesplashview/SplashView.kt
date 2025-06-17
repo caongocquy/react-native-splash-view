@@ -1,4 +1,5 @@
-package com.showdar.reactnativesplashview
+package com.leoshowdar.reactnativesplashview
+
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
